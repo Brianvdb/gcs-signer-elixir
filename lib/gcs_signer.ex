@@ -40,7 +40,7 @@ defmodule GcsSigner do
     signature = [verb, md5_digest, content_type, expires, resource]
                 |> Enum.join("\n") |> generate_signature(client)
 
-    url = "#{@base_url}#{resource}"
+    url = "https://#{bucket}.storage.googleapis.com#{resource}"
     qs = %{
       "GoogleAccessId" => client.client_email,
       "Expires" => expires,
